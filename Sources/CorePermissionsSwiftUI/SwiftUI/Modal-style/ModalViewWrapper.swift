@@ -58,6 +58,7 @@ import Introspect
             bodyView
                 .sheet(isPresented: showing.combine(with: shouldShowPermission), content: {
                     ModalView(showModal: showing)
+                        .withEnvironmentObjects(store: store, permissionStyle: .modal)
                         //Possible nil, to account for backward compatibility
                         .onAppear(perform: store.onAppear ?? store.configStore.onAppear)
                         .onDisappear(perform: store.onDisappear ?? store.configStore.onDisappear)
